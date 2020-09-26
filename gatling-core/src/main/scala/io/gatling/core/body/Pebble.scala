@@ -55,6 +55,7 @@ private[gatling] object Pebble extends StrictLogging {
       val javaValue = v match {
         case c: Seq[Any]      => c.asJava
         case c: Iterable[Any] => c.asJavaCollection
+        case m: Map[Any, Any] => m.asJava
         case any: AnyRef      => any // the AnyVal case is not addressed, as an AnyVal will be in an AnyRef wrapper
       }
       jMap.put(k, javaValue)
